@@ -1,37 +1,29 @@
-# A5 Starter (No Modules)
+1,2.)
+The modules added are
+-main.js
+Own: Event listener as well as calling render after state changes
 
-This is a deliberately **single-file JavaScript** app intended as a starting point for A5.
+-render.js
+Own: UI updates 
+Exports: render()
 
-- All JS lives in `app.js`
-- It uses `fetch()` to load local JSON
-- It includes explicit UI states: loading / error / empty / success
+-state.js
+Own: The app state and filtering / selected Items
+Exports: getFilteredItems() getSelectedItem()
 
-Your A5 task is to **refactor** this into ES modules (without changing behavior).
+-api.js
+Own: loading JSON, fetch erros
+Exports: loadItems()
 
-## How to run
+3.) How to run it
+python3 -m http.server 6412
+and on chrome 
+http://localhost:6412
 
-From inside this folder:
-
-```bash
-python3 -m http.server 4040
-```
-
-Open:
-- `http://localhost:4040/`
-
-## What to refactor (suggested module split)
-
-When you move to modules, a good split is:
-
-- `src/state.js` — state object + selectors (derived values)
-- `src/render.js` — DOM updates only
-- `src/api.js` — fetch + parsing/validation only
-- `src/dom.js` — DOM queries (exported refs)
-- `src/main.js` — event wiring + boot
-
-## Behavior checklist (should remain true after refactor)
-
-- On load: shows loading, then shows the list
-- Search filters the list
-- Clicking an item shows details
-- Error state shows a Retry button
+4.)
+App loads items from item.json
+search filters works by title
+clicking and items show information
+clearing the search bar brings back all the other items
+Retry button reloads the data
+Error message shows if the fetch fails
